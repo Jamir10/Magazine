@@ -1,0 +1,338 @@
+*, ::before, ::after {
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --border-guide-1: 1px solid red;
+    --border-guide-2: 1px solid rgb(94, 206, 94);
+    --border-guide-3: 1px solid rgb(89, 0, 255);
+}
+
+section {
+    border: var(--border-guide-2);
+}
+
+html {
+    font-size: 62.5%; 
+    /*default font size for your web page is 10px 
+    (the browser default is 16px).
+    2rem would be 20px.
+    */
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Baskervville, serif;
+    color: linen;
+    background-color: rgb(20, 30, 40);
+}
+
+h1 {
+    font-family: Anton, sans-serif;
+    border: var(--border-guide-1);
+}
+
+h2,h3, h4, h5, h6 {
+    font-family: Raleway, sans-serif;
+    border: var(--border-guide-1);
+}
+
+a {
+    text-decoration: none;
+    color: linen;
+    border: var(--border-guide-1);
+}
+
+main { 
+    display: grid;
+    /* grid-template-columns: 1fr 94rem 1fr; */
+    /* In this case, your parent element is the main 
+    element. Set the content to have a three-column 
+    layout by adding a grid-template-columns property 
+    with a value of 1fr 94rem 1fr. This will create 
+    three columns where the middle column is 94rem 
+    wide, and the first and last columns are both 
+    1 fraction of the remaining space in the grid 
+    container. 
+    */    
+    grid-template-columns: minmax(2rem, 1fr) minmax(min-content, 94rem) minmax(2rem, 1fr);
+    /* Use the minmax function to make your columns 
+    responsive on any device. The minmax function 
+    takes two arguments, the first being the minimum 
+    value and the second being the maximum. These 
+    values could be a length, percentage, fr, or 
+    even a keyword like max-content
+    
+    Your main selector should have a grid-template-columns 
+    property set to minmax(2rem, 1fr) 
+    minmax(min-content, 94rem) minmax(2rem, 1fr). 
+    */
+    row-gap: 3rem;
+}
+
+/*==========section1=========*/
+
+.heading {
+    grid-column: 2/3;
+    /* This will tell the .heading element to start 
+    at grid line 2 and end at grid line 3 
+    */
+    /* The grid-column property tells the grid item 
+    which grid line to start and end at. 
+    */
+    display: grid;
+    /* For additional control over the layout of 
+    your content, you can have a CSS Grid within a 
+    CSS Grid. 
+    */
+    grid-template-columns: repeat(2, 1fr);
+    /* The CSS repeat() function is used to repeat 
+    a value, rather than writing it out manually, 
+    and is helpful for grid layouts. For example, 
+    setting the grid-template-columns property to 
+    repeat(20, 200px) would create 20 columns each 
+    200px wide. 
+    */
+    row-gap: 1.5rem;
+}
+
+.hero {
+    grid-column: 1/ -1;
+    /* Create a .hero selector and give it a grid-column 
+    property set to 1 / -1. This will tell the 
+    element to span the full width of the grid. 
+    */
+    /* Remember that the grid-column property determines 
+    which columns an element starts and ends at. 
+    There may be times where you are unsure of how 
+    many columns your grid will have, but you want 
+    an element to stop at the last column. 
+    To do this, you can use -1 for the end column. 
+    */
+    position: relative;
+}
+
+img {
+    width: 100%;
+    object-fit: cover;
+    /* The object-fit property tells the browser 
+    how to position the element within its container. 
+    In this case, cover will set the image to fill 
+    the container, cropping as needed to avoid 
+    changing the aspect ratio. 
+    */
+}
+
+.hero-title {
+    text-align: center;
+    color: orangered;
+    font-size: 8rem;
+}
+
+.hero-subtitle {
+    border: var(--border-guide-3);
+    font-size: 2.4rem;
+    color: orangered;
+    text-align: center;
+}
+
+.author {
+    border: var(--border-guide-3);
+    font-size: 2rem;
+    font-family: Raleway, sans-serif;
+}
+ 
+.author-name a:hover {
+    /* background-color: #306203; */
+    text-decoration: underline;
+    color: #306203;
+}
+
+.publish-date {
+    color: rgba(255, 255, 255, 0.5)
+}
+
+.social-icons {
+    border: var(--border-guide-3);
+    display: grid;
+    font-size: 3rem;
+    grid-template-columns: repeat(5, 1fr);
+    /* If you wanted to add more social icons, but 
+    keep them on the same row, you would need to 
+    update grid-template-columns to create additional 
+    columns. As an alternative, you can use the 
+    grid-auto-flow property. 
+    */
+    grid-auto-flow: column;
+    /* This property takes either row or column as 
+    the first value, with an optional second value 
+    of dense. grid-auto-flow uses an auto-placement 
+    algorithm to adjust the grid layout. Setting it 
+    to column will tell the algorithm to create new 
+    columns for content as needed. The dense value 
+    allows the algorithm to backtrack and fill holes 
+    in the grid with smaller items, which can result 
+    in items appearing out of order. 
+    */
+    grid-auto-columns: 1fr;
+    /* Now the auto-placement algorithm will kick 
+    in when you add a new icon element. However, 
+    the algorithm defaults the new column width to 
+    be auto, which will not match your current 
+    columns. 
+    */
+    /* You can override this with the grid-auto-columns 
+    property. Give the .social-icons selector a 
+    grid-auto-columns property set to 1fr 
+    */
+    align-items: center;
+}
+
+/*==========section2=========*/
+
+.text {
+    grid-column: 2/3;
+    font-size: 1.8rem;
+    letter-spacing: 0.6px;
+    column-width: 25rem;
+    /* Your .text element is not a CSS Grid, but you 
+    can create columns within an element without 
+    using Grid by using the column-width property. 
+    */
+    text-align: justify;
+}
+
+.first-paragraph {
+    border: var(--border-guide-3);
+}
+
+p {
+    border: var(--border-guide-3);
+}
+
+.first-paragraph::first-letter {
+    border: var(--border-guide-1);
+    /* The ::first-letter pseudo-selector allows you to 
+    target the first letter in the text content of an 
+    element. 
+    */
+    font-size: 6rem;
+    color: orangered;
+    /* The other text has been shifted out of place. 
+    */
+    float: left;
+    margin-right: 1rem;
+}
+
+hr {
+    margin: 1.5rem 0;
+    border: 1px solid rgba(120, 120, 120, 0.6);
+}
+
+.quote {
+    border: var(--border-guide-3);
+    color: #00beef;
+    font-size: 2.4rem;
+    text-align: center;
+    font-family: Raleway, sans-serif;
+}
+
+.quote::before {
+    content: '" ';
+}
+
+.quote::after {
+    content: ' "';
+}
+
+/*==========section3=========*/
+/* <section class="text text-with-images">  included in class="text"
+.text2 {
+    grid-column: 2/3;
+}
+*/
+
+.text-with-images {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /*2 column col1=1fr col2=2fr */
+    /* You will need to have a column for text and a 
+    column for images. 
+    */
+    column-gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.lists {
+    list-style-type: none;
+    /* This will get rid of the bullet points on the 
+    list items. 
+    */
+    margin-top: 2rem;
+}
+
+.lists li {
+    margin-bottom: 1.5rem;
+}
+
+.list-title, .list-subtitle {
+    color: #00beef;
+}
+
+.image-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: repeat(3, min-content);
+    /*
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: repeat(3, min-content);
+    The images should be within a two column, three row layout.
+    */
+    gap: 2rem;
+    /* The gap property is a shorthand way to set 
+    the value of column-gap and row-gap at the same 
+    time. If given one value, it sets the column-gap 
+    and row-gap both to that value. If given two 
+    values, it sets the row-gap to the first value 
+    and the column-gap to the second. 
+    */
+    place-items: center;
+}
+
+.image-1, .image-3 {
+    grid-column: 1/-1;
+}
+
+@media only screen and (max-width: 720px) {
+    .image-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .text-with-images {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .hero-title {
+        font-size: 6rem;
+    }
+    .hero-subtitle, .author, .quote, .list-title {
+        font-size: 1.8rem;
+    }
+    .social-icons {
+        font-size: 2rem;
+    }
+    .text {
+        font-size: 1.6rem;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    .hero-title {
+        font-size: 4.5rem;
+    }
+}
+
